@@ -1,6 +1,6 @@
 import Foundation
 import CoreBluetooth
-import Clibdivecomputer
+import LibDCBridge
 import LibDCBridge
 
 @objc public class DeviceConfiguration: NSObject {

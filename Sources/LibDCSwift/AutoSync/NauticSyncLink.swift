@@ -1,5 +1,5 @@
 import Foundation
-import Clibdivecomputer
+import LibDCBridge
 import LibDCBridge
 
 /// One open session with a Suunto Nautic/Ocean. Every call blocks on the

@@ -1,5 +1,5 @@
 import Foundation
-import Clibdivecomputer
+import LibDCBridge
 import LibDCBridge
 
 public struct SampleData {

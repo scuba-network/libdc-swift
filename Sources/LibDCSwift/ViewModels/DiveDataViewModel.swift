@@ -1,6 +1,6 @@
 import Foundation
 import CoreBluetooth
-import Clibdivecomputer
+import LibDCBridge
 import LibDCBridge
 import Combine
 

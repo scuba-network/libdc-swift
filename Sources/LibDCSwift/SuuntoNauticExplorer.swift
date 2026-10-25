@@ -1,5 +1,5 @@
 import Foundation
-import Clibdivecomputer
+import LibDCBridge
 import LibDCBridge
 
 /// EXPERIMENTAL: raw protocol access + decoding for Suunto Nautic/Ocean

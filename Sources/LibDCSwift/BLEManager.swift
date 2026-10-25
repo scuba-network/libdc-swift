@@ -3,9 +3,9 @@ import Foundation
 import UIKit
 #endif
 import CoreBluetooth
-import Clibdivecomputer
 import LibDCBridge
-import LibDCBridge.CoreBluetoothManagerProtocol
+import LibDCBridge
+import LibDCBridge
 import Combine
 
 /// Represents a BLE serial service with its identifying information
@@ -168,10 +168,17 @@ public class CoreBluetoothManager: NSObject, CoreBluetoothManagerProtocol, Obser
 
     private override init() {
         super.init()
+        // DSCNT change (see VENDORED.md): ask for state restoration only when
+        // the app declares the bluetooth-central background mode. iOS throws
+        // NSInternalInconsistencyException for a restore identifier without
+        // it, which ended an app that does not use background Bluetooth.
+        let backgroundModes = Bundle.main.object(forInfoDictionaryKey: "UIBackgroundModes") as? [String] ?? []
         centralManager = CBCentralManager(
             delegate: self,
             queue: nil,
-            options: [CBCentralManagerOptionRestoreIdentifierKey: Self.restoreIdentifier]
+            options: backgroundModes.contains("bluetooth-central")
+                ? [CBCentralManagerOptionRestoreIdentifierKey: Self.restoreIdentifier]
+                : nil
         )
     }
     
